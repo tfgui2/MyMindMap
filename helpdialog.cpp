@@ -13,7 +13,7 @@ HelpDialog::HelpDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile file("help.txt");
+    QFile file(":/help/help.txt"); // 리소스에서 로드
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
         in.setCodec("UTF-8");

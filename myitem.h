@@ -31,6 +31,8 @@ public:
     void resize(QRectF r);
     void setColor(QColor c);
     QColor getColor();
+    void setFontColor(QColor c);
+    QColor getFontColor();
 
     QRectF autoAdjustRect();
     QRectF adjustTextRect;
@@ -46,6 +48,7 @@ private:
     QPointF oldpos;
     QString data;
     QColor color = Qt::white;
+    QColor fontcolor = Qt::gray;
 
 public:
     MyArrow *arrowFromParent = nullptr;

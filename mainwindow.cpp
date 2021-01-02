@@ -265,6 +265,18 @@ void MainWindow::on_actionHelp_triggered()
 void MainWindow::on_actionAdjust_triggered()
 {
     this->scene->adjustSelectedItem();
-    //ui->statusbar->showMessage("item adjusted!", 5000);
     global::instance()->statusMessage("item adjusted!");
+}
+
+void MainWindow::on_actionFont_Color_triggered()
+{
+    QColor old = scene->getFontColorSelectedItem();
+    if (old == Qt::black) {
+        return;
+    }
+
+    QColor c = QColorDialog::getColor(old);
+    if (c.isValid()) {
+        this->scene->fontcolorChangeSelectedItem(c);
+    }
 }

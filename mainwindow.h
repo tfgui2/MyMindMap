@@ -42,6 +42,8 @@ private slots:
 
     void on_actionAdjust_triggered();
 
+    void on_actionFont_Color_triggered();
+
 protected:
     void openFile(QString filename);
     void saveFile(QString filename);

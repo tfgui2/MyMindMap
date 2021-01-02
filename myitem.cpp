@@ -86,17 +86,24 @@ void MyItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     }
 
+    // box
     if (isSelected()) {
         painter->setPen(Qt::red);
     }
     else {
         painter->setPen(Qt::gray);
     }
-
     painter->setBrush(this->color);
     painter->drawRoundedRect(rect, 5, 5);
 
+    // text
     QRectF textRect = rect.adjusted(5,5,-5,-5);
+    if (isSelected()) {
+        painter->setPen(Qt::red);
+    }
+    else {
+        painter->setPen(fontcolor);
+    }
     painter->drawText(textRect, Qt::AlignLeft, this->data, &adjustTextRect);
 }
 
@@ -141,6 +148,17 @@ void MyItem::setColor(QColor c)
 QColor MyItem::getColor()
 {
     return this->color;
+}
+
+void MyItem::setFontColor(QColor c)
+{
+    this->fontcolor = c;
+    update();
+}
+
+QColor MyItem::getFontColor()
+{
+    return this->fontcolor;
 }
 
 QRectF MyItem::autoAdjustRect()

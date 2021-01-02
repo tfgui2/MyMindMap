@@ -106,6 +106,24 @@ QColor MyGraphicsScene::getColorSelectedItem()
     return myitem->getColor();
 }
 
+void MyGraphicsScene::fontcolorChangeSelectedItem(QColor color)
+{
+    MyItem *myitem = myselectedItem();
+    if (myitem == nullptr)
+        return;
+
+    myitem->setFontColor(color);
+}
+
+QColor MyGraphicsScene::getFontColorSelectedItem()
+{
+    MyItem *myitem = myselectedItem();
+    if (myitem == nullptr)
+        return Qt::black;
+
+    return myitem->getFontColor();
+}
+
 void MyGraphicsScene::adjustSelectedItem()
 {
     MyItem *myitem = myselectedItem();
@@ -163,6 +181,7 @@ bool MyGraphicsScene::_saveMyItem(QDataStream &out, MyItem *item)
     out << item->getMyData();
     out << item->getRect();
     out << item->getColor();
+    out << item->getFontColor();
     return true;
 }
 
@@ -178,14 +197,17 @@ bool MyGraphicsScene::_loadMyItem(QDataStream &in)
     in >> rect;
 
     QColor color = Qt::white;
+    QColor fontcolor = Qt::gray;
     if (version > 1) {
         in >> color;
+        in >> fontcolor;
     }
 
     int itemid = addMyItem(pos, parentId, id, data, rect);
 
     MyItem* item = findMyItem(itemid);
     item->setColor(color);
+    item->setFontColor(fontcolor);
 
     return true;
 }

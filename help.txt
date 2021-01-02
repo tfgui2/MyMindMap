@@ -1,4 +1,5 @@
 My mind map 설명서
++version 2
 
 - 기본 동작
  : 화면에서 마우스 오른클릭하면 박스 생성
@@ -19,3 +20,4 @@ My mind map 설명서
 
 - View 메뉴
  : color = 박스 선택>메뉴클릭 = 박스 색 변경
+ : font color = 글자색

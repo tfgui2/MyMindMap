@@ -20,6 +20,8 @@ public:
     void detachSelectedItem();
     void colorChangeSelectedItem(QColor color);
     QColor getColorSelectedItem();
+    void fontcolorChangeSelectedItem(QColor color);
+    QColor getFontColorSelectedItem();
     void adjustSelectedItem();
 
     QUndoStack *undoStack;

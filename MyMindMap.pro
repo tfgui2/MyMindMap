@@ -15,6 +15,7 @@ SOURCES += \
     inputdialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    minimapwidget.cpp \
     myarrow.cpp \
     mygraphicsscene.cpp \
     myitem.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     helpdialog.h \
     inputdialog.h \
     mainwindow.h \
+    minimapwidget.h \
     myarrow.h \
     mygraphicsscene.h \
     myitem.h \

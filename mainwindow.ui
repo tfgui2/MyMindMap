@@ -50,6 +50,7 @@
     </property>
     <addaction name="actionColor"/>
     <addaction name="actionFont_Color"/>
+    <addaction name="actionMinimap"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -149,6 +150,11 @@
   <action name="actionFont_Color">
    <property name="text">
     <string>Font Color</string>
+   </property>
+  </action>
+  <action name="actionMinimap">
+   <property name="text">
+    <string>Minimap</string>
    </property>
   </action>
  </widget>

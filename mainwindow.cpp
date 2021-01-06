@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QColorDialog>
 #include "helpdialog.h"
+#include "minimapwidget.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -26,6 +27,12 @@ MainWindow::MainWindow(QWidget *parent)
     QWidget *widget = new QWidget();
     widget->setLayout(layout);
     setCentralWidget(widget);
+
+
+    minimap = new MinimapWidget(widget);
+    minimap->setGeometry(10,10, 500,500);
+    minimap->hide();
+    minimap->scene = scene;
 
     // 초기 타이틀바
     titlebarName();
@@ -278,5 +285,15 @@ void MainWindow::on_actionFont_Color_triggered()
     QColor c = QColorDialog::getColor(old);
     if (c.isValid()) {
         this->scene->fontcolorChangeSelectedItem(c);
+    }
+}
+
+void MainWindow::on_actionMinimap_triggered()
+{
+    if (minimap->isHidden()) {
+        minimap->show();
+    }
+    else {
+        minimap->hide();
     }
 }

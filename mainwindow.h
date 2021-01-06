@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include "mygraphicsscene.h"
+#include "minimapwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,6 +45,8 @@ private slots:
 
     void on_actionFont_Color_triggered();
 
+    void on_actionMinimap_triggered();
+
 protected:
     void openFile(QString filename);
     void saveFile(QString filename);
@@ -57,6 +60,9 @@ private:
 
     QGraphicsView *view;
     MyGraphicsScene *scene;
+
+    MinimapWidget *minimap;
+
 
     // QWidget interface
 protected:

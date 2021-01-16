@@ -53,6 +53,9 @@ void MainWindow::clearScene()
     scene = new MyGraphicsScene(this);
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     view->setScene(scene);
+
+    minimap->scene = scene;
+
     delete oldscene;
 
     g_modified = false;
@@ -103,7 +106,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         on_actionSave_triggered();
     }
 
-    // ask close
+    // TODO ask close
 }
 
 void MainWindow::checkLastFileLoad()

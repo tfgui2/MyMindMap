@@ -51,6 +51,7 @@
     <addaction name="actionColor"/>
     <addaction name="actionFont_Color"/>
     <addaction name="actionMinimap"/>
+    <addaction name="actionFind"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -155,6 +156,14 @@
   <action name="actionMinimap">
    <property name="text">
     <string>Minimap</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="text">
+    <string>Find</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>

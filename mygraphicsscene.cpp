@@ -6,6 +6,7 @@
 #include "myitem.h"
 #include <QGraphicsItem>
 #include "resizer.h"
+#include <QGraphicsView>
 
 
 MyGraphicsScene::MyGraphicsScene(QObject *parent)
@@ -173,6 +174,29 @@ bool MyGraphicsScene::load(QDataStream &in)
         _loadMyItem(in);
     }
     return true;
+}
+
+QList<int> MyGraphicsScene::findstring(QString str)
+{
+    QList<int> list;
+
+    QList<MyItem*> items = this->mysorteditems();
+    foreach (MyItem *item, items) {
+        QString temp = item->getMyData();
+        if (temp.contains(str)) {
+            list.append(item->id);
+        }
+    }
+
+    return list;
+}
+
+void MyGraphicsScene::centerOn(int id, QGraphicsView *view)
+{
+    MyItem *item = findMyItem(id);
+    if (item) {
+        view->centerOn(item);
+    }
 }
 
 bool MyGraphicsScene::_saveMyItem(QDataStream &out, MyItem *item)

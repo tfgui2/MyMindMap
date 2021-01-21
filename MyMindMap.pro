@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     commands.cpp \
+    finddialog.cpp \
     global.cpp \
     helpdialog.cpp \
     inputdialog.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 
 HEADERS += \
     commands.h \
+    finddialog.h \
     global.h \
     helpdialog.h \
     inputdialog.h \
@@ -34,6 +36,7 @@ HEADERS += \
     resizer.h
 
 FORMS += \
+    finddialog.ui \
     helpdialog.ui \
     inputdialog.ui \
     mainwindow.ui

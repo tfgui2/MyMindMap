@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QStatusBar>
+#include "mainwindow.h"
 
 extern bool g_key_space;
 extern bool g_modified;
@@ -21,6 +22,11 @@ public:
 public: // statusbar
     QStatusBar *statusbar;
     void statusMessage(QString msg);
+
+public: // MainWindow;
+    MainWindow *mainwindow;
+    QList<QString> find(QString str);
+    void centerto(int id);
 
 public: // setting
     void setLastFileName(QString filename);

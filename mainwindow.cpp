@@ -9,6 +9,7 @@
 #include <QColorDialog>
 #include "helpdialog.h"
 #include "minimapwidget.h"
+#include "finddialog.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     global::instance()->statusbar = ui->statusbar;
+    global::instance()->mainwindow = this;
 
     QVBoxLayout *layout = new QVBoxLayout;
 
@@ -34,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
     minimap->hide();
     minimap->scene = scene;
 
+    findDlg = new FindDialog(widget);
+    findDlg->hide();
+
     // 초기 타이틀바
     titlebarName();
 
@@ -44,6 +49,24 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+QList<QString> MainWindow::findstring(QString str)
+{
+    QList<QString> strlist;
+
+    QList<int> list = scene->findstring(str);
+    foreach (int i, list) {
+        QString s = QString::number(i);
+        strlist.append(s);
+    }
+
+    return strlist;
+}
+
+void MainWindow::centerto(int id)
+{
+    scene->centerOn(id, view);
 }
 
 void MainWindow::clearScene()
@@ -299,4 +322,9 @@ void MainWindow::on_actionMinimap_triggered()
     else {
         minimap->hide();
     }
+}
+
+void MainWindow::on_actionFind_triggered()
+{
+    findDlg->show();
 }

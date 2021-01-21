@@ -34,6 +34,10 @@ public:
     qint32 new_version = 2;
     qint32 version;
 
+    QList<int> findstring(QString str);
+
+    void centerOn(int id, QGraphicsView *view);
+
 protected:
     bool _saveMyItem(QDataStream &out, MyItem *item);
     bool _loadMyItem(QDataStream &in);

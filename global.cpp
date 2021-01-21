@@ -36,6 +36,18 @@ void global::statusMessage(QString msg)
         statusbar->showMessage(msg, 5000);
 }
 
+QList<QString> global::find(QString str)
+{
+    QList<QString> list = mainwindow->findstring(str);
+
+    return list;
+}
+
+void global::centerto(int id)
+{
+    mainwindow->centerto(id);
+}
+
 void global::setLastFileName(QString filename)
 {
     QSettings settings;

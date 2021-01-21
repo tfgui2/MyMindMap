@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "mygraphicsscene.h"
 #include "minimapwidget.h"
+#include "finddialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +18,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+public:
+    QList<QString> findstring(QString str);
+    void centerto(int id);
 
 protected:
     void clearScene();
@@ -47,6 +52,8 @@ private slots:
 
     void on_actionMinimap_triggered();
 
+    void on_actionFind_triggered();
+
 protected:
     void openFile(QString filename);
     void saveFile(QString filename);
@@ -62,6 +69,7 @@ private:
     MyGraphicsScene *scene;
 
     MinimapWidget *minimap;
+    FindDialog *findDlg;
 
 
     // QWidget interface

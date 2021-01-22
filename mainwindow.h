@@ -22,6 +22,7 @@ public:
 public:
     QList<QString> findstring(QString str);
     void centerto(int id);
+    void centerto(QPoint scenepos);
 
 protected:
     void clearScene();

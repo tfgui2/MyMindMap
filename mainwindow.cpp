@@ -69,6 +69,11 @@ void MainWindow::centerto(int id)
     scene->centerOn(id, view);
 }
 
+void MainWindow::centerto(QPoint scenepos)
+{
+    view->centerOn(scenepos);
+}
+
 void MainWindow::clearScene()
 {
     MyGraphicsScene* oldscene = scene;

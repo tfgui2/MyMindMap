@@ -27,6 +27,7 @@ public: // MainWindow;
     MainWindow *mainwindow;
     QList<QString> find(QString str);
     void centerto(int id);
+    void centerto(QPoint scenepos);
 
 public: // setting
     void setLastFileName(QString filename);

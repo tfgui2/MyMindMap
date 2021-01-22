@@ -48,6 +48,11 @@ void global::centerto(int id)
     mainwindow->centerto(id);
 }
 
+void global::centerto(QPoint scenepos)
+{
+    mainwindow->centerto(scenepos);
+}
+
 void global::setLastFileName(QString filename)
 {
     QSettings settings;

@@ -183,7 +183,7 @@ QList<int> MyGraphicsScene::findstring(QString str)
     QList<MyItem*> items = this->mysorteditems();
     foreach (MyItem *item, items) {
         QString temp = item->getMyData();
-        if (temp.contains(str)) {
+        if (temp.contains(str, Qt::CaseInsensitive)) {
             list.append(item->id);
         }
     }

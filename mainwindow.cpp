@@ -44,6 +44,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     // lastfile 자동로드 - 이건 제일 마지막에.
     checkLastFileLoad();
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [this](){autosave();});
+    timer->start(1000 * 60);
 }
 
 MainWindow::~MainWindow()
@@ -332,4 +336,16 @@ void MainWindow::on_actionMinimap_triggered()
 void MainWindow::on_actionFind_triggered()
 {
     findDlg->show();
+}
+
+void MainWindow::autosave()
+{
+    if (g_modified == false) {
+        return;
+    }
+    if (currentFileName.isEmpty()) {
+        return;
+    }
+
+    on_actionSave_triggered();
 }

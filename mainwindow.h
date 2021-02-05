@@ -54,6 +54,7 @@ private slots:
     void on_actionMinimap_triggered();
 
     void on_actionFind_triggered();
+    void autosave();
 
 protected:
     void openFile(QString filename);

@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new MyGraphicsScene(this);
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     view = new QGraphicsView(scene);
+
     layout->addWidget(view);
     QWidget *widget = new QWidget();
     widget->setLayout(layout);
@@ -42,12 +43,14 @@ MainWindow::MainWindow(QWidget *parent)
     // 초기 타이틀바
     titlebarName();
 
-    // lastfile 자동로드 - 이건 제일 마지막에.
-    checkLastFileLoad();
-
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, [this](){autosave();});
     timer->start(1000 * 60);
+
+    this->clearScene();
+
+    // lastfile 자동로드 - 이건 제일 마지막에.
+    checkLastFileLoad();
 }
 
 MainWindow::~MainWindow()
@@ -85,10 +88,12 @@ void MainWindow::clearScene()
     scene = new MyGraphicsScene(this);
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     view->setScene(scene);
+    view->centerOn(2300, 0);
 
     minimap->scene = scene;
 
-    delete oldscene;
+    if (oldscene != NULL)
+        delete oldscene;
 
     g_modified = false;
 }
@@ -243,7 +248,7 @@ void MainWindow::saveFile(QString filename)
     QDataStream out(&file);   // we will serialize the data into the file
     this->scene->save(out);
 
-    global::instance()->statusMessage("file saved! : " + filename);
+    global::instance()->statusMessage("file saved! : " + filename + " at " + QDateTime::currentDateTime().toString());
 }
 
 void MainWindow::titlebarName()
@@ -340,6 +345,7 @@ void MainWindow::on_actionFind_triggered()
 
 void MainWindow::autosave()
 {
+    qDebug("auto save");
     if (g_modified == false) {
         return;
     }
